@@ -2,3 +2,5 @@
   .container
     %p= comment.user.email
     %p= comment.body
+    - if current_user.id == comment.user_id
+      %p= link_to "delete", movie_comment_path(comment.movie, comment), method: :delete, class: 'btn btn-danger btn-xs'

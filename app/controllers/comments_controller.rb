@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 before_action :find_movie
+before_action :find_comment, only: [:destroy]
 
   def create
     if current_user.comments.where(movie_id: @movie.id).count >= 1
@@ -9,7 +10,7 @@ before_action :find_movie
       @comment = @movie.comments.create(comment_params)
       @comment.user_id = current_user.id
       @comment.save
-      
+
       if @comment.save
         flash[:success] = "Successfully created a comment"
         redirect_to movie_path(@movie)
@@ -20,6 +21,13 @@ before_action :find_movie
     end
   end
 
+  def destroy
+
+    @comment.destroy
+    flash[:danger] = "Your comment has been deleted!"
+    redirect_to movie_path(@movie)
+  end
+
   private
 
     def comment_params
@@ -28,5 +36,9 @@ before_action :find_movie
 
     def find_movie
       @movie = Movie.find(params[:movie_id])
+    end
+
+    def find_comment
+      @comment = @movie.comments.find(params[:id])
     end
 end
