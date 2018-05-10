@@ -1,0 +1,7 @@
+%h1{:align => "center"} Top Commentators this week
+%ol.col-md-6.col-md-offset-4
+  - @commenters.each do |user|
+    %li
+      = user.email
+      = user.comments.count
+      comments this week

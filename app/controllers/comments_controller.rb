@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_action :find_movie, except: [:commentators]
+before_action :find_movie, except: [:commenters]
 before_action :find_comment, only: [:destroy, :edit, :update]
 
   def create
@@ -37,8 +37,8 @@ before_action :find_comment, only: [:destroy, :edit, :update]
     redirect_to movie_path(@movie)
   end
 
-  def commentators
-    @commentators = User.joins(:comments).group('users.id').where('comments.created_at >= ?', 1.week.ago.utc).order('count(comments.id) desc').limit(10)
+  def commenters
+    @commenters = User.joins(:comments).group('users.id').where('comments.created_at >= ?', 1.week.ago.utc).order('count(comments.id) desc').limit(10)
   end
 
   private

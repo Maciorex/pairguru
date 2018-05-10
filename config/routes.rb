@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "home#welcome"
-  get "commentators", to: "comments#commentators"
+  get "commenters", to: "comments#commenters"
   resources :genres, only: :index do
     member do
       get "movies"
