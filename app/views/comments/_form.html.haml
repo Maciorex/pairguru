@@ -1,7 +1,7 @@
 = form_for([@movie, @movie.comments.build]) do |f|
   .form-group
     .control-label.col-md-2
-      %p= f.label :body
+      %p= f.label :comment
     .control-label.col-md-10
       %p= f.text_field :body, class: "form-control", placeholder: "What do you think about this movie?"
   .form-group
