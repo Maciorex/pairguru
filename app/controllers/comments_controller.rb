@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 before_action :find_movie
-before_action :find_comment, only: [:destroy]
+before_action :find_comment, only: [:destroy, :edit, :update]
 
   def create
     if current_user.comments.where(movie_id: @movie.id).count >= 1
@@ -18,6 +18,15 @@ before_action :find_comment, only: [:destroy]
         flash[:danger] = "Your comment is invalid, check it again"
         redirect_to movie_path(@movie)
       end
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @comment.update(comment_params)
+      flash[:success] = "Comment edited"
+      redirect_to movie_path(@movie)
     end
   end
 
