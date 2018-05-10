@@ -9,8 +9,7 @@ before_action :find_comment, only: [:destroy, :edit, :update]
     else
       @comment = @movie.comments.create(comment_params)
       @comment.user_id = current_user.id
-      @comment.save
-
+    
       if @comment.save
         flash[:success] = "Successfully created a comment"
         redirect_to movie_path(@movie)
