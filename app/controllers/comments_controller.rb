@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_action :find_movie
+before_action :find_movie, except: [:commentators]
 before_action :find_comment, only: [:destroy, :edit, :update]
 
   def create
@@ -35,6 +35,10 @@ before_action :find_comment, only: [:destroy, :edit, :update]
     @comment.destroy
     flash[:danger] = "Your comment has been deleted!"
     redirect_to movie_path(@movie)
+  end
+
+  def commentators
+
   end
 
   private
