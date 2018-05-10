@@ -1,3 +1,7 @@
 %h1 Top Commentators this week
-- @commentators.each do |user|
-  %p= user.email
+%ol
+  - @commentators.each do |user|
+    %li
+      = user.email
+      = user.comments.count
+      Comments this week
