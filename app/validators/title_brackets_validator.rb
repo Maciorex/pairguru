@@ -12,17 +12,17 @@ class TitleBracketsValidator < ActiveModel::Validator
         stack << char
       elsif right.include? char
         if stack.empty? || (lookup[stack.pop] != char)
-          return record.errors[:base] << "There is something wrong with brackets"
+          record.errors[:base] << "There is something wrong with brackets"
         end
       end
     end
-    
+
     unless stack.empty?
-      return record.errors[:base] << "There is something wrong with brackets"
+      record.errors[:base] << "There is something wrong with brackets"
     end
 
     unless brackets.none? { |br| record.title.include?(br) }
-      return record.errors[:base] << "Brackets are empty"
+      record.errors[:base] << "Brackets are empty"
     end
   end
 end
