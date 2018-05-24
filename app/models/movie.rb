@@ -11,9 +11,11 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #
-
 class Movie < ApplicationRecord
   belongs_to :genre
   has_many :grades
   has_many :comments, dependent: :destroy
+  validates_with TitleBracketsValidator
+  validates :title, presence: true
+
 end
