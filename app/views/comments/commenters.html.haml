@@ -1,0 +1,13 @@
+%h1{:align => "center"} Top Commentators this week
+%table.table-hover.col-md-6.col-md-offset-4
+  %thead
+    %tr
+      %th Pos.
+      %th User email
+      %th Comments in last 7 days
+  %tbody
+    - @commenters.each_with_index do |user, i|
+      %tr
+        %td= i + 1
+        %td= user.email
+        %td= user.comments.count
