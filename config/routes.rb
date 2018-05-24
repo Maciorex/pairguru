@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :show] do
     resources :comments
+    resources :grades, only: [:create]
     member do
       get :send_info
     end

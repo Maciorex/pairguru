@@ -14,5 +14,6 @@
 
 class Movie < ApplicationRecord
   belongs_to :genre
+  has_many :grades
   has_many :comments, dependent: :destroy
 end

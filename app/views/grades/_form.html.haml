@@ -1,0 +1,6 @@
+= form_for([@movie, @movie.grades.build]) do |f|
+  .form-group
+    %p= f.label :grade
+    %p= f.select :value, (1..10)
+    %p= f.hidden_field :user_id, value: current_user.id
+    %p= f.submit class: "btn"
