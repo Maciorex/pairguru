@@ -1,0 +1,9 @@
+- @comments.each do |comment|
+  .row
+    .col-xs-8
+      .well.well-lg
+        %p= comment.user.email 
+        %p= comment.body
+        - if current_user.id == comment.user_id
+          = link_to "delete", movie_comment_path(comment.movie, comment), method: :delete, class: 'btn btn-danger btn-xs'
+          = link_to "edit", edit_movie_comment_path(comment.movie, comment), class: 'btn btn-success btn-xs'

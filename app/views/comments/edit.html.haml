@@ -1,0 +1,9 @@
+= form_for([@movie, @comment]) do |f|
+  .form-group
+    .control-label.col-md-2
+      %p= f.label :body
+    .control-label.col-md-10
+      %p= f.text_field :body, class: "form-control", placeholder: "What do you think about this movie?"
+  .form-group
+    .col-md-4
+      %p= f.submit class: "btn btn-primary"
